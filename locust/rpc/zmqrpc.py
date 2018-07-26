@@ -27,7 +27,7 @@ class Client(BaseSocket):
     def __init__(self, host, port):
         context = zmq.Context()
         self.receiver = context.socket(zmq.PULL)
-        self.receiver.connect("tcp://%s:%i" % (host, port+1))
+        self.receiver.connect("tcp://%s-secondary:%i" % (host, port+1))
         
         self.sender = context.socket(zmq.PUSH)
         self.sender.connect("tcp://%s:%i" % (host, port))
